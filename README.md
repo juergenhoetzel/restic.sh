@@ -40,16 +40,16 @@ Including an example of how to use your role (for instance, with variables passe
       roles:
           - role: restic
             vars:
-			   restic_repository: /sftp:restic@backup.fritz.box:/
+               restic_repository: /sftp:restic@backup.fritz.box:/
                restic_backup_opts:
-				   - "-x"
-				   - "--"
-				   - "/var/lib/mysql-backup"
-				   - "/var/www"
+                   - "-x"
+                   - "--"
+                   - "/var/lib/mysql-backup"
+                   - "/var/www"
 
                restic_mail_recipients: 
-				   - operator@example.host
-				   - backupoperator@example.host
+                   - operator@example.host
+                   - backupoperator@example.host
                restic_password: "{{ restic_secret  }}"
 ```
 License
