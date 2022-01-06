@@ -10,6 +10,7 @@ exec 6>&1
 exec 7>&2
 
 restic_out=$(mktemp)
+trap "rm $restic_out" EXIT
 
 setup_out() {
     exec >"${restic_out}" 2>&1
@@ -60,11 +61,4 @@ elif [[ "${RESTIC_SUCCEED_MAIL}" == 1 ]];then
     report "Prune succeed"
 fi
 
-
-
 exit ${EXIT_CODE}
-
-
-
-
-# FIXME: Delete tmp output
