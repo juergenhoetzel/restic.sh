@@ -20,11 +20,11 @@ Role Variables
   <dt><strong>restic_mail_recipients [optional]</strong></dt>
   <dd>List of eMail recipients</dd>
   <dt><strong>restic_succeed_mail [optional]</strong></dt>
-  <dd>Send emails on success? `(yes|no)`</dd>
+  <dd>Send emails on success? (yes|no)</dd>
   <dt><strong>restic_backup_opts</strong></dt>
-  <dd>List of backup options, default `["-x" "--" "/" ]`</dd>
+  <dd>List of backup options, default ["-x" "--" "/" ]</dd>
   <dt><strong>restic_forget_opts [optional]</strong></dt>
-  <dd>List of forget options, default `[]`: Don't run forget.</dd>
+  <dd>List of forget options, default []: Don't run forget.</dd>
 </dl>
 
 
@@ -40,16 +40,16 @@ Including an example of how to use your role (for instance, with variables passe
       roles:
           - role: restic
             vars:
-			   restic_repository: /sftp:restic@backup.fritz.box:/
+               restic_repository: /sftp:restic@backup.fritz.box:/
                restic_backup_opts:
-				   - "-x"
-				   - "--"
-				   - "/var/lib/mysql-backup"
-				   - "/var/www"
+                   - "-x"
+                   - "--"
+                   - "/var/lib/mysql-backup"
+                   - "/var/www"
 
                restic_mail_recipients: 
-				   - operator@example.host
-				   - backupoperator@example.host
+                   - operator@example.host
+                   - backupoperator@example.host
                restic_password: "{{ restic_secret  }}"
 ```
 License
