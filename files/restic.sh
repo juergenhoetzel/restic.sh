@@ -23,8 +23,8 @@ reset_out() {
 
 report () {
     reset_out
-    if ((${#RESITC_MAIL_RECIPIENTS[@]} > 0 ));then
-       mail -s "$1 on $HOSTNAME"  "${RESITC_MAIL_RECIPIENTS[@]}" <"${restic_out}"
+    if ((${#RESTIC_MAIL_RECIPIENTS[@]} > 0 ));then
+       mail -s "$1 on $HOSTNAME"  "${RESTIC_MAIL_RECIPIENTS[@]}" <"${restic_out}"
     fi
     echo -n "$1: " >&2
     cat "$restic_out" >&2
