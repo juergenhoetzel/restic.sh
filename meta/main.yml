@@ -1,0 +1,10 @@
+galaxy_info:
+  author: Jürgen Hötzel
+  description: Timer based Restic backup and eMail notification
+  license: MIT
+  galaxy_tags:
+    - system
+    - backup
+    - systemd
+    - restic
+    - mail

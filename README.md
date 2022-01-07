@@ -11,7 +11,6 @@ Configured eMail-Relay for sending eMails.
 Role Variables
 --------------
 
--  
 <dl>
   <dt><strong>restic_repository</strong></dt>
   <dd>The place where your backups will be saved.</dd>
@@ -25,6 +24,8 @@ Role Variables
   <dd>List of backup options, default ["-x" "--" "/" ]</dd>
   <dt><strong>restic_forget_opts [optional]</strong></dt>
   <dd>List of forget options, default []: Don't run forget.</dd>
+  <dt><strong>restic_backup_timespan</strong></dt>
+  <dd>Backup interval time specification, default: daily</dd>
 </dl>
 
 

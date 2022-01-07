@@ -1,0 +1,7 @@
+[Unit]
+Description=Restic Backup Job
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/restic.sh
+KillMode=process
+

@@ -1,0 +1,45 @@
+---
+# tasks file for restic
+- name: Enable copart/restic
+  community.general.copr:
+    host: copr.fedorainfracloud.org
+    state: enabled
+    name: copart/restic
+  when:
+    - ansible_facts['distribution'] == "CentOS"
+- name: Restic is installed
+  package: name="restic"
+
+- name: Copy backup script
+  copy:
+    src: restic.sh
+    dest: /usr/local/bin
+    mode: "u=rx,g=rx,o=rx"
+
+- name: Copy config file
+  template:
+    src: restic.sh.conf.j2
+    dest: /etc/restic.sh.conf
+    mode: "u=rw,g=,o="
+
+- name: Copy systemd service
+  copy:
+    src: restic.sh.service
+    dest: /etc/systemd/system
+  register: systemd_unit
+
+- name: Copy systemd timer
+  template:
+    src: restic.sh.timer.j2
+    dest: /etc/systemd/system/restic.sh.timer
+  register: systemd_timer
+
+- name: Reconfigure systemd
+  systemd:
+    daemon_reload: yes
+    name: restic.sh.timer
+    enabled: yes
+    state: started
+
+
+

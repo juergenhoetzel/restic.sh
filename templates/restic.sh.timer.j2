@@ -1,0 +1,7 @@
+[Unit]
+Description=Regulary restic backup
+
+[Timer]
+OnCalendar={{ restic_backup_timespan }}
+[Install]
+WantedBy=basic.target
