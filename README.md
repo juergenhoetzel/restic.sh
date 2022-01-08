@@ -26,6 +26,8 @@ Role Variables
   <dd>List of forget options, default []: Don't run forget.</dd>
   <dt><strong>restic_backup_timespan</strong></dt>
   <dd>Backup interval time specification, default: daily</dd>
+  <dt><strong>restic_pre_command [optional]</strong></dt>
+  <dd>command to execure before backup, Example: condition || exit 0</dd>
 </dl>
 
 

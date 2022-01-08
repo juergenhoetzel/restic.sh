@@ -30,8 +30,6 @@ report () {
     cat "$restic_out" >&2
 }
 
-setup_out
-
 set -a
 for config_file in "${CONFIG_FILES[@]}"; do
     if [[ -r "${config_file}" ]];then
@@ -44,6 +42,9 @@ for config_file in "${CONFIG_FILES[@]}"; do
 done
 set +a
 
+eval ${RESTIC_PRE_COMMAND}
+
+setup_out
 
 if ! restic ${RESTIC_GLOBAL_OPTS[@]} backup ${RESTIC_BACKUP_OPTS[@]};then
    report "Backup failed"
