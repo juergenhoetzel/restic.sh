@@ -41,7 +41,7 @@ Including an example of how to use your role (for instance, with variables passe
 ```yml
     - hosts: servers
       roles:
-          - role: restic
+          - role: juergenhoetzel.restic_sh
             vars:
                restic_repository: /sftp:restic@backup.fritz.box:/
                restic_backup_opts:
