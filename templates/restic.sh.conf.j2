@@ -5,7 +5,7 @@
 #####################################
 
 RESTIC_REPOSITORY="{{ restic_repository }}"
-RESTIC_PASSWORD="{{ restic_password }}"
+RESTIC_PASSWORD='{{ restic_password }}'
 RESTIC_BACKUP_OPTS=({{ restic_backup_opts | join (' ') }})
 RESTIC_FORGET_OPTS=({{ restic_forget_opts | join (' ') }})
 RESTIC_SUCCEED_MAIL={{ restic_succeed_mail }}
