@@ -11,15 +11,15 @@ Configured eMail-Relay for sending eMails.
 Role Variables
 --------------
 
-| Name                     | Default          | Description                                  |
-|--------------------------|------------------|----------------------------------------------|
-| `restic_repository`      |                  | The place where your backups will be saved   |
-| `restic_password`        |                  | The repository password                      |
-| `restic_mail_recipients` |                  | List of eMail recipient (optional)           |
-| `restic_succeed_mail`    | no               | Also send email on success?                  |
-| `restic_backup_opts`     | ["-x" "--" "/" ] | List of `backup` command options             |
-| `restic_forget_opts`     |                  | List of  `forget` command options [optional] |
-
+| Name                     | Default          | Description                                      |
+|--------------------------|------------------|--------------------------------------------------|
+| `restic_repository`      |                  | The place where your backups will be saved       |
+| `restic_password`        |                  | The repository password                          |
+| `restic_mail_recipients` |                  | List of eMail recipient (optional)               |
+| `restic_succeed_mail`    | no               | Also send email on success?                      |
+| `restic_backup_opts`     | ["-x" "--" "/" ] | List of `backup` command options                 |
+| `restic_forget_opts`     |                  | List of  `forget` command options [optional]     |
+| `restic_pre_command`     |                  | Shell command to execute before starting backup. Example: `no_backup_condition && exit 0` |
 
 Dependencies
 ------------
