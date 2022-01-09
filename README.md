@@ -11,24 +11,14 @@ Configured eMail-Relay for sending eMails.
 Role Variables
 --------------
 
-<dl>
-  <dt><strong>restic_repository</strong></dt>
-  <dd>The place where your backups will be saved.</dd>
-  <dt><strong>restic_password</strong></dt>
-  <dd>The repository password.</dd>
-  <dt><strong>restic_mail_recipients [optional]</strong></dt>
-  <dd>List of eMail recipients</dd>
-  <dt><strong>restic_succeed_mail [optional]</strong></dt>
-  <dd>Send emails on success? (yes|no)</dd>
-  <dt><strong>restic_backup_opts</strong></dt>
-  <dd>List of backup options, default ["-x" "--" "/" ]</dd>
-  <dt><strong>restic_forget_opts [optional]</strong></dt>
-  <dd>List of forget options, default []: Don't run forget.</dd>
-  <dt><strong>restic_backup_timespan</strong></dt>
-  <dd>Backup interval time specification, default: daily</dd>
-  <dt><strong>restic_pre_command [optional]</strong></dt>
-  <dd>command to execure before backup, Example: condition || exit 0</dd>
-</dl>
+| Name                     | Default          | Description                                  |
+|--------------------------|------------------|----------------------------------------------|
+| `restic_repository`      |                  | The place where your backups will be saved   |
+| `restic_password`        |                  | The repository password                      |
+| `restic_mail_recipients` |                  | List of eMail recipient (optional)           |
+| `restic_succeed_mail`    | no               | Also send email on success?                  |
+| `restic_backup_opts`     | ["-x" "--" "/" ] | List of `backup` command options             |
+| `restic_forget_opts`     |                  | List of  `forget` command options [optional] |
 
 
 Dependencies
