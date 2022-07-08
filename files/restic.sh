@@ -46,7 +46,7 @@ eval ${RESTIC_PRE_COMMAND}
 
 setup_out
 
-if ! restic ${RESTIC_GLOBAL_OPTS[@]} backup ${RESTIC_BACKUP_OPTS[@]};then
+if ! restic ${RESTIC_GLOBAL_OPTS[@]} backup "${RESTIC_BACKUP_OPTS[@]}";then
    report "Backup failed"
    (( EXIT_CODE +=2 ))
 elif [[ "${RESTIC_SUCCEED_MAIL}" == 1 ]];then
