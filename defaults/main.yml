@@ -1,5 +1,6 @@
 ---
 # defaults file for restic
+restic_pre_command: /usr/bin/true
 restic_mail_recipients: []
 restic_succeed_mail: 0
 restic_forget_opts: []
@@ -10,4 +11,3 @@ restic_backup_opts:
 
 # systemd time specification
 restic_backup_timespan: daily
-
