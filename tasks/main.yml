@@ -1,14 +1,49 @@
 ---
-# tasks file for restic
-- name: Enable copart/restic
-  community.general.copr:
-    host: copr.fedorainfracloud.org
-    state: enabled
-    name: copart/restic
-  when:
-    - ansible_facts['distribution'] == "CentOS"
-- name: Restic is installed
-  package: name="restic"
+- name: Check if restic binary exists
+  stat:
+    path: /usr/local/bin/restic
+  register: restic_binary
+- name: Install Restic from github
+  block:
+    - name: Restic RPM package is absent
+      package: name="restic" state="absent"
+    - name: Get latest release info from GitHub API
+      uri:
+        url: "https://api.github.com/repos/restic/restic/releases/latest"
+        method: GET
+        return_content: yes
+      register: release_info
+
+    - name: Find Linux amd64 download URL
+      set_fact:
+        download_url: "{{ item.browser_download_url }}"
+        filename: "{{ item.name }}"
+      loop: "{{ release_info.json.assets }}"
+      when:
+        - "'linux' in item.name | lower"
+        - "'amd64' in item.name | lower"
+        - "item.name.endswith('.bz2')"
+
+    - name: Download restic binary
+      get_url:
+        url: "{{ download_url }}"
+        dest: "/usr/local/bin/{{ filename }}"
+        mode: "0644"
+      when: download_url is defined
+
+    - name: Extract and install restic binary
+      shell: "bunzip2 -c /usr/local/bin/{{ filename }} > /usr/local/bin/restic"
+      args:
+        creates: "/usr/local/bin/restic"
+
+    - name: Restic binary is executable
+      ansible.builtin.file:
+        path: "/usr/local/bin/restic"
+        state: file
+        mode: "0755"
+  tags:
+    - install
+  when: not restic_binary.stat.exists
 
 - name: Copy backup script
   copy:
@@ -40,6 +75,3 @@
     name: restic.sh.timer
     enabled: yes
     state: started
-
-
-
